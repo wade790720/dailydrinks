@@ -1,0 +1,10 @@
+node_modules/
+dist/
+
+package-lock.json
+npm-debug.*
+yarn-error.log
+
+.DS_Store
+
+__snapshots__/
