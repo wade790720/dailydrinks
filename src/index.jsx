@@ -1,18 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Header from "modules/Header";
+import App from "App";
 import "./style.sass";
 
-const Application = () => {
-    return (
-        <article>
-            <Header />
-            Drinks List
-        </article>
-    );
-};
-
 ReactDOM.render(
-    <Application />,
+    <App />,
     document.getElementById("wrapper")
 );

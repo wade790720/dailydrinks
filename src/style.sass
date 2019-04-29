@@ -5,8 +5,12 @@ html, body, #wrapper, article
     height: 100%
     background: #eee
 
-article
+#wrapper
     display: flex
     flex-direction: column
-    justify-content: center
-    align-items: center
+
+    > article
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
