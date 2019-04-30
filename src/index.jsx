@@ -11,10 +11,12 @@ class App extends React.Component {
 
     state = {
         list: [{
+            id: 0,
             name: "peggy",
             price: "65",
             note: "sugar half",
         }, {
+            id: 1,
             name: "翡翠拿鐵",
             price: "110",
             note: "半糖去冰",
@@ -66,7 +68,7 @@ class App extends React.Component {
         this.edit(target, editItem);
     }
 
-    render() {
+    render() {        
         return (
             <div id="wrapper">
                 <Header />
