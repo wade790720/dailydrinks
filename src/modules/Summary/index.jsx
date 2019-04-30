@@ -8,9 +8,9 @@ const Summary = props => {
     const summary = <div>Total amount is <span className="amount">{amount}</span>.</div>;
     return (
         <div id="summary">
-            {
-                amount <= 0 ? "Press Enter when complete." : summary
-            }
+            { amount == 0 && "Press Enter when complete." }
+            { amount < 0 && "Price should be a number" }
+            { amount > 0 && summary }
         </div>
     );
 }

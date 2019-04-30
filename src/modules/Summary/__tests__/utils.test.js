@@ -19,4 +19,18 @@ describe("Summary utils tests", () => {
         }];
         expect(totalAmount(list)).toBe(3);
     });
+
+    it("sum of text", () => {
+        const list = [{
+            price: "a",
+        }, {
+            price: "2",
+        }];
+        expect(totalAmount(list)).toBe(-1);
+    });
+
+    it("sum of empty list", () => {
+        const list = [];
+        expect(totalAmount(list)).toBe(0);
+    });
 });
