@@ -42,14 +42,14 @@ class EditItem extends React.Component {
         }
     }
 
-    renderInput(inputName) {
+    renderInput(inputName, placeholder) {
         return (
             <Input
                 ref={input => this[`${inputName}Input`] = input}
                 className={cx("item", {
                     disabled: this.props.disabled
                 })}
-                placeholder={inputName}
+                placeholder={placeholder}
                 value={this.state.info[inputName]}
                 onChange={(value) => this.handleChange(inputName, value)}
                 onKeyDown={this.handleKeyDown}
@@ -60,9 +60,9 @@ class EditItem extends React.Component {
     render() {
         return (
             <tr className="edit-item">
-                <td>{this.renderInput("name")}</td>
-                <td>{this.renderInput("price")}</td>
-                <td colSpan="2">{this.renderInput("note")}</td>
+                <td>{this.renderInput("name", "Name(required)")}</td>
+                <td>{this.renderInput("price", "Price(required)")}</td>
+                <td colSpan="2">{this.renderInput("note", "Note")}</td>
             </tr>
         );
     }
