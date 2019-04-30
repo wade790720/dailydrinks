@@ -10,17 +10,7 @@ import "./style.sass";
 class App extends React.Component {
 
     state = {
-        list: [{
-            id: 0,
-            name: "peggy",
-            price: "65",
-            note: "sugar half",
-        }, {
-            id: 1,
-            name: "翡翠拿鐵",
-            price: "110",
-            note: "半糖去冰",
-        }],
+        list: [],
     }
 
     add(target) {
