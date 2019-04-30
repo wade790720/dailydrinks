@@ -1,18 +1,19 @@
 @import ~styles/variable
 
 input
-    background: #ffffff69
+    background: #ffffffc4
     padding: 16px 26px
     border-width: 0
-    border-bottom: 1px solid #ddd
+    border-bottom: 2px solid #efefef
     transition: all .4s
     outline: none
 
     &:focus
-        background: #e6d375
+        border-bottom-color: $color-important
     
     &.disabled
         opacity: .4
+        border-bottom-color: #fff
 
 ::placeholder
     color: rgba($color-main, .3)
