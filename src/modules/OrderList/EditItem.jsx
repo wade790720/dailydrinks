@@ -45,6 +45,7 @@ class EditItem extends React.Component {
         return (
             <Input
                 ref={input => this[`${inputName}Input`] = input}
+                className="item"
                 placeholder={inputName}
                 value={this.state.info[inputName]}
                 onChange={(value) => this.handleChange(inputName, value)}
@@ -57,8 +58,7 @@ class EditItem extends React.Component {
             <tr className="edit-item">
                 <td>{this.renderInput("name")}</td>
                 <td>{this.renderInput("price")}</td>
-                <td>{this.renderInput("note")}</td>
-                <td></td>
+                <td colSpan="2">{this.renderInput("note")}</td>
             </tr>
         );
     }

@@ -36,21 +36,13 @@ class App extends React.Component {
         });
     }
 
-    edit(target, editItem = false) {        
+    edit(target) {
         this.setState({
             list: [
                 ...this.state.list.map(item => target.id === item.id ? 
-                    { ...target, edit: editItem || false} : 
-                    item
+                    { ...target, edit: false} : 
+                    { ...item, edit: false }
                 ),
-            ]
-        });
-    }
-
-    delete(target) {        
-        this.setState({
-            list: [
-                ...this.state.list.filter(item => target.id !== item.id),
             ]
         });
     }
@@ -61,16 +53,37 @@ class App extends React.Component {
     }
 
     handleDelete = target => {
-        this.delete(target);
+        this.setState({
+            list: [
+                ...this.state.list.filter(item => target.id !== item.id),
+            ]
+        });
     }
 
-    handleChangeMode = (target, editItem) => {
-        this.edit(target, editItem);
+    handleSwitchEditing = (target, focusItem) => {
+        this.setState({
+            list: [
+                ...this.state.list.map(item => target.id === item.id ? 
+                    { ...target, edit: focusItem} : 
+                    { ...item, edit: false }
+                ),
+            ]
+        });
+    }
+
+    handleSwitchEdited = e => {
+        if (!e.target.getAttribute("class")) {
+            this.setState({
+                list: [
+                    ...this.state.list.map(item => ({ ...item, edit: false }))
+                ]
+            });
+        }
     }
 
     render() {        
         return (
-            <div id="wrapper">
+            <article onClick={this.handleSwitchEdited}>
                 <Header />
                 <Summary list={this.state.list} />
                 <OrderList>
@@ -84,13 +97,13 @@ class App extends React.Component {
                             <OrderList.ViewItem
                                 key={`item-${inx}`}
                                 info={item}
-                                onChangeMode={this.handleChangeMode}
+                                onSwitchEditing={this.handleSwitchEditing}
                                 onDelete={this.handleDelete}
                             />
                     ))}
                     <OrderList.EditItem key={`add-${this.state.list.length}`} onComplete={this.handleComplete} />
                 </OrderList>
-            </div>
+            </article>
         )
     }
 };
