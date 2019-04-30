@@ -56,7 +56,7 @@ class EditItem extends React.Component {
                     <Input
                         ref={input => this.nameInput = input}
                         type="text"
-                        className={cx("item", {
+                        className={cx("item name", {
                             disabled: this.props.disabled
                         })}
                         placeholder="Name(required)"
@@ -71,7 +71,7 @@ class EditItem extends React.Component {
                     <Input
                         ref={input => this.priceInput = input}
                         type="number"
-                        className={cx("item", {
+                        className={cx("item price", {
                             disabled: this.props.disabled
                         })}
                         placeholder="Price(required)"
@@ -85,7 +85,7 @@ class EditItem extends React.Component {
                     <Input
                         ref={input => this.noteInput = input}
                         type="text"
-                        className={cx("item", {
+                        className={cx("item note", {
                             disabled: this.props.disabled
                         })}
                         placeholder="Note"

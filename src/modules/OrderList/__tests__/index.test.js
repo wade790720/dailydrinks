@@ -1,19 +1,14 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Header from "../index";
+import OrderList from "../index";
 import renderer from "react-test-renderer";
 
-describe("Header tests", () => {
+describe("OrderList tests", () => {
     
     it("default view", () => {
         const tree = renderer.create(
-            <Header />
+            <OrderList />
         ).toJSON();
         expect(tree).toMatchSnapshot();
-    });
-
-    it("check title", () => {
-        const wrapper = shallow(<Header />);
-        expect(wrapper.find("header").text()).toBe("Daily Drink");
     });
 });

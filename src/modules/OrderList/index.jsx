@@ -5,15 +5,6 @@ import EditItem from "./EditItem";
 import "./style.sass";
 
 const List = props => {
-
-    const handleBlur = e => {
-        console.warn(document.activeElement);
-        
-        if (!e.currentTarget.contains(document.activeElement)) {
-            props.onBlur();
-        }
-    };
-
     return (
         <section id="list">
             <table>
@@ -32,14 +23,6 @@ const List = props => {
         </section>
     );ㄊ
 }
-
-List.propTypes = {
-    onBlur: PropTypes.func,
-};
-
-List.defaultProps = {
-    onBlur: () => {},
-};
 
 List.ViewItem = ViewItem;
 List.EditItem = EditItem;

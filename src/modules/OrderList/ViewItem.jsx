@@ -4,19 +4,17 @@ import "./style.sass";
 
 const ViewItem = props => {
     const { info } = props;
-    const renderItem = itemName => {
-        return (
-            <td className={itemName} onClick={() => props.onSwitchEditing(info, itemName)}>
-                <div className="item">{info[itemName]}</div>
-            </td>
-        )
-    };
-
     return (
         <tr className="view-item">
-            {renderItem("name")}
-            {renderItem("price")}
-            {renderItem("note")}
+            <td className="name" onClick={() => props.onSwitchEditing(info, "name")}>
+                <div className="item">{info.name}</div>
+            </td>
+            <td className="price" onClick={() => props.onSwitchEditing(info, "price")}>
+                <div className="item">{info.price}</div>
+            </td>
+            <td className="note" onClick={() => props.onSwitchEditing(info, "note")}>
+                <div className="item">{info.note}</div>
+            </td>
             <td className="action">
                 <a title="Delete" onClick={() => props.onDelete(info)}>
                     <i className="icon-delete"></i>
