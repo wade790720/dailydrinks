@@ -48,6 +48,7 @@ class EditItem extends React.Component {
                 className="item"
                 placeholder={inputName}
                 value={this.state.info[inputName]}
+                disabled={this.props.disabled}
                 onChange={(value) => this.handleChange(inputName, value)}
                 onKeyDown={this.handleKeyDown}
             />
@@ -75,6 +76,7 @@ EditItem.propTypes = {
             PropTypes.string,
         ]),
     }),
+    disabled: PropTypes.bool,
     onComplete: PropTypes.func,
 };
 
@@ -82,8 +84,8 @@ EditItem.defaultProps = {
     info: {
         ...defaultValue,
     },
+    disabled: false,
     onComplete: () => {},
-    edit: "name",
 };
 
 export default EditItem;

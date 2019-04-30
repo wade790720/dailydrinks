@@ -4,12 +4,15 @@ input
     background: #ffffff69
     padding: 16px 26px
     border-width: 0
-    border-bottom: 2px solid #ddd
+    border-bottom: 1px solid #ddd
     transition: all .4s
     outline: none
 
     &:focus
         background: #e6d375
+    
+    &[disabled]
+        opacity: .4
 
 ::placeholder
     color: rgba($color-main, .3)

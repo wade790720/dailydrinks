@@ -87,21 +87,29 @@ class App extends React.Component {
                 <Header />
                 <Summary list={this.state.list} />
                 <OrderList>
-                    {this.state.list.map((item, inx) => (
-                        item.edit ? 
-                            <OrderList.EditItem
-                                key={`item-${inx}`}
-                                info={item}
-                                onComplete={this.handleComplete}
-                            /> :
-                            <OrderList.ViewItem
-                                key={`item-${inx}`}
-                                info={item}
-                                onSwitchEditing={this.handleSwitchEditing}
-                                onDelete={this.handleDelete}
-                            />
-                    ))}
-                    <OrderList.EditItem key={`add-${this.state.list.length}`} onComplete={this.handleComplete} />
+                    {
+                        this.state.list.map((item, inx) => (
+                            item.edit ? 
+                                <OrderList.EditItem
+                                    key={`item-${inx}`}
+                                    info={item}
+                                    onComplete={this.handleComplete}
+                                /> :
+                                <OrderList.ViewItem
+                                    key={`item-${inx}`}
+                                    info={item}
+                                    onSwitchEditing={this.handleSwitchEditing}
+                                    onDelete={this.handleDelete}
+                                />
+                        ))
+                    }
+                    {
+                        <OrderList.EditItem
+                            key={`add-${this.state.list.length}`} 
+                            disabled={this.state.list.filter(item => !!item.edit).length > 0}
+                            onComplete={this.handleComplete} 
+                        />
+                    }
                 </OrderList>
             </article>
         )
