@@ -23,6 +23,25 @@
                 background: rgba($color-main, .1)
             td
                 cursor: text
+            td.action
+                padding: 0
+
+                i.icon-delete
+                    transition: all .2s
+                    display: block
+                    background-color: $color-base
+                    mask-image: url(./trash.svg)
+                    width: 16px
+                    height: 16px
+
+                a
+                    display: flex
+                    padding: 16px 26px
+                    cursor: pointer
+                    justify-content: center
+                    &:hover
+                        i.icon-delete
+                            background-color: $color-red
 
         .edit-item
             td

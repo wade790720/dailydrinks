@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from "components/Button";
+// import Button from "components/Button";
+import trashSvg from "./trash.svg";
 import "./style.sass";
 
 const ViewItem = props => {
@@ -24,7 +25,11 @@ const ViewItem = props => {
             {renderItem("name")}
             {renderItem("price")}
             {renderItem("note")}
-            {/* <td><Button text="DELETE" onClick={() => props.onDelete(info)}/></td> */}
+            <td className="action">
+                <a title="Delete" onClick={() => props.onDelete(info)}>
+                    <i className="icon-delete"></i>
+                </a>
+            </td>
         </tr>
     );
 }

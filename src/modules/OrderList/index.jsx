@@ -13,6 +13,7 @@ const List = props => {
                     <td>Name</td>
                     <td>Price</td>
                     <td>Note</td>
+                    <td>Action</td>
                 </tr>
             </thead>
             <tbody>

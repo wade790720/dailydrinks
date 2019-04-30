@@ -38,11 +38,14 @@ module.exports = {
             {
                 test: /\.sass$/,
                 use: [{
-                    loader: MiniCssExtractPlugin.loader
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        publicPath: "../images",
+                    },
                 }, {
                     loader: "css-loader",
                     options: {
-                        sourceMap: true
+                        sourceMap: true,
                     }
                 }, {
                     loader: "postcss-loader",
@@ -57,10 +60,10 @@ module.exports = {
                 }]
             },
             {
-                test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/,
+                test: /\.(jpg|png|woff|woff2|eot|ttf)$/,
                 loader: "url-loader",
                 options: {
-                    limit: 8192
+                    limit: 8192,
                 }
             },
             {
@@ -68,7 +71,8 @@ module.exports = {
                 loader: "file-loader",
                 options: {
                     limit: 8192,
-                    name: "/assets/images/[name].[ext]"
+                    name: "assets/images/[name].[ext]",
+                    publicPath: "../..",
                 }
             },
             {
@@ -76,7 +80,8 @@ module.exports = {
                 loader: "file-loader",
                 options: {
                     limit: 8192,
-                    name: "/assets/fonts/[name].[ext]"
+                    name: "assets/fonts/[name].[ext]",
+                    publicPath: "../..",
                 }
             },
         ]
