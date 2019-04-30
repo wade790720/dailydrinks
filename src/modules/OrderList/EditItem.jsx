@@ -70,7 +70,7 @@ class EditItem extends React.Component {
                 <td>
                     <Input
                         ref={input => this.priceInput = input}
-                        type="number"
+                        type="tel"
                         className={cx("item price", {
                             disabled: this.props.disabled
                         })}
