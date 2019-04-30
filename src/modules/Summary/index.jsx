@@ -5,12 +5,11 @@ import "./style.sass";
 
 const Summary = props => {
     const amount = totalAmount(props.list);
+    const summary = <div>Total amount is <span className="amount">{amount}</span>.</div>;
     return (
         <div id="summary">
             {
-                amount <= 0 ? 
-                    "Press Enter when complete." : 
-                    `Total: ${amount}`
+                amount <= 0 ? "Press Enter when complete." : summary
             }
         </div>
     );
