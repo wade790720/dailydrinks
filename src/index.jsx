@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Header from "modules/Header";
 import Summary from "modules/Summary";
-import OrderList, { ViewItem, EditItem } from "modules/OrderList";
+import OrderList from "modules/OrderList";
 import { ADD, EDIT } from "modules/OrderList/constant";
 import "normalize.css";
 import "./style.sass";
@@ -10,7 +10,15 @@ import "./style.sass";
 class App extends React.Component {
 
     state = {
-        list: [],
+        list: [{
+            name: "peggy",
+            price: "65",
+            note: "sugar half",
+        }, {
+            name: "翡翠拿鐵",
+            price: "110",
+            note: "半糖去冰",
+        }],
     }
 
     add(target) {
@@ -66,19 +74,19 @@ class App extends React.Component {
                 <OrderList>
                     {this.state.list.map((item, inx) => (
                         item.edit ? 
-                            <EditItem
+                            <OrderList.EditItem
                                 key={`item-${inx}`}
                                 info={item}
                                 onComplete={this.handleComplete}
                             /> :
-                            <ViewItem
+                            <OrderList.ViewItem
                                 key={`item-${inx}`}
                                 info={item}
                                 onChangeMode={this.handleChangeMode}
                                 onDelete={this.handleDelete}
                             />
                     ))}
-                    <EditItem key={`add-${this.state.list.length}`} onComplete={this.handleComplete} />
+                    <OrderList.EditItem key={`add-${this.state.list.length}`} onComplete={this.handleComplete} />
                 </OrderList>
             </div>
         )

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from "components/Button";
+import "./style.sass";
 
 const ViewItem = props => {
     const { info } = props;
@@ -11,7 +12,11 @@ const ViewItem = props => {
     }
 
     const renderItem = itemName => {
-        return <td className={itemName} onClick={() => props.onChangeMode(info, itemName)}>{info[itemName]}</td>
+        return (
+            <td className={itemName} onClick={() => props.onChangeMode(info, itemName)}>
+                <div className="item">{info[itemName]}</div>
+            </td>
+        )
     };
 
     return (
@@ -19,7 +24,7 @@ const ViewItem = props => {
             {renderItem("name")}
             {renderItem("price")}
             {renderItem("note")}
-            <td><Button text="DELETE" onClick={() => props.onDelete(info)}/></td>
+            {/* <td><Button text="DELETE" onClick={() => props.onDelete(info)}/></td> */}
         </tr>
     );
 }

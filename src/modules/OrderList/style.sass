@@ -1,0 +1,28 @@
+@import ~styles/variable
+
+#list
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    table
+        border-spacing: 0
+        margin: 20px
+        font-size: 14px
+
+        thead td
+            font-weight: bold
+            color: #ababab
+            padding: 10px 26px
+
+        td
+            padding: 16px 26px
+
+        .view-item
+            &:nth-child(odd)
+                background: rgba($color-main, .1)
+            .item
+
+        .edit-item
+            td
+                padding: 0

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from "components/Input";
 import { ADD, EDIT } from "modules/OrderList/constant";
+import "./style.sass";
 
 const defaultValue = {
     id: -1,
