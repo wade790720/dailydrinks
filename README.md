@@ -1,5 +1,5 @@
 # dailydrinks
-手搖飲料下訂功能。
+Order drinks app.
 
 ## Build Setup
 ```
