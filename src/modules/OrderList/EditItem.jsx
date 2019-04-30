@@ -37,32 +37,64 @@ class EditItem extends React.Component {
     }
 
     handleKeyDown = e => {
-        if (e.key === 'Enter') {            
-            this.props.onComplete(this.state.info, this.status);
+        if (e.key !== 'Enter') return;
+        if (this.nameInput.value.trim() === "") {
+            this.nameInput.focus();
+            return;
         }
+        if (this.priceInput.value.trim() === "") {
+            this.priceInput.focus();
+            return;
+        }
+        this.props.onComplete(this.state.info, this.status);
     }
 
-    renderInput(inputName, placeholder) {
-        return (
-            <Input
-                ref={input => this[`${inputName}Input`] = input}
-                className={cx("item", {
-                    disabled: this.props.disabled
-                })}
-                placeholder={placeholder}
-                value={this.state.info[inputName]}
-                onChange={(value) => this.handleChange(inputName, value)}
-                onKeyDown={this.handleKeyDown}
-                onFocus={this.props.onFocus}
-            />
-        )
-    }
     render() {
         return (
             <tr className="edit-item">
-                <td>{this.renderInput("name", "Name(required)")}</td>
-                <td>{this.renderInput("price", "Price(required)")}</td>
-                <td colSpan="2">{this.renderInput("note", "Note")}</td>
+                <td>
+                    <Input
+                        ref={input => this.nameInput = input}
+                        type="text"
+                        className={cx("item", {
+                            disabled: this.props.disabled
+                        })}
+                        placeholder="Name(required)"
+                        value={this.state.info.name}
+                        required="required"
+                        onChange={(value) => this.handleChange("name", value)}
+                        onKeyDown={this.handleKeyDown}
+                        onFocus={this.props.onFocus}
+                    />
+                </td>
+                <td>
+                    <Input
+                        ref={input => this.priceInput = input}
+                        type="number"
+                        className={cx("item", {
+                            disabled: this.props.disabled
+                        })}
+                        placeholder="Price(required)"
+                        value={this.state.info.price}
+                        onChange={(value) => this.handleChange("price", value)}
+                        onKeyDown={this.handleKeyDown}
+                        onFocus={this.props.onFocus}
+                    />
+                </td>
+                <td colSpan="2">
+                    <Input
+                        ref={input => this.noteInput = input}
+                        type="text"
+                        className={cx("item", {
+                            disabled: this.props.disabled
+                        })}
+                        placeholder="Note"
+                        value={this.state.info.note}
+                        onChange={(value) => this.handleChange("note", value)}
+                        onKeyDown={this.handleKeyDown}
+                        onFocus={this.props.onFocus}
+                    />
+                </td>
             </tr>
         );
     }
