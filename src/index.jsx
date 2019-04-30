@@ -71,19 +71,17 @@ class App extends React.Component {
         });
     }
 
-    handleSwitchEdited = e => {
-        if (!e.target.getAttribute("class")) {
-            this.setState({
-                list: [
-                    ...this.state.list.map(item => ({ ...item, edit: false }))
-                ]
-            });
-        }
+    handleSwitchEdited = () => {
+        this.setState({
+            list: [
+                ...this.state.list.map(item => ({ ...item, edit: false }))
+            ]
+        });
     }
 
     render() {        
         return (
-            <article onClick={this.handleSwitchEdited}>
+            <article onClick={e => !e.target.getAttribute("class") && this.handleSwitchEdited()}>
                 <Header />
                 <Summary list={this.state.list} />
                 <OrderList>
@@ -107,6 +105,7 @@ class App extends React.Component {
                         <OrderList.EditItem
                             key={`add-${this.state.list.length}`} 
                             disabled={this.state.list.filter(item => !!item.edit).length > 0}
+                            onFocus={this.handleSwitchEdited}
                             onComplete={this.handleComplete} 
                         />
                     }

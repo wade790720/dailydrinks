@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from "components/Input";
 import { ADD, EDIT } from "modules/OrderList/constant";
+import cx from "classnames";
 import "./style.sass";
 
 const defaultValue = {
@@ -35,7 +36,7 @@ class EditItem extends React.Component {
         });
     }
 
-    handleKeyDown = (e) => {
+    handleKeyDown = e => {
         if (e.key === 'Enter') {            
             this.props.onComplete(this.state.info, this.status);
         }
@@ -45,12 +46,14 @@ class EditItem extends React.Component {
         return (
             <Input
                 ref={input => this[`${inputName}Input`] = input}
-                className="item"
+                className={cx("item", {
+                    disabled: this.props.disabled
+                })}
                 placeholder={inputName}
                 value={this.state.info[inputName]}
-                disabled={this.props.disabled}
                 onChange={(value) => this.handleChange(inputName, value)}
                 onKeyDown={this.handleKeyDown}
+                onFocus={this.props.onFocus}
             />
         )
     }
@@ -77,6 +80,7 @@ EditItem.propTypes = {
         ]),
     }),
     disabled: PropTypes.bool,
+    onFocus: PropTypes.func,
     onComplete: PropTypes.func,
 };
 
@@ -85,6 +89,7 @@ EditItem.defaultProps = {
         ...defaultValue,
     },
     disabled: false,
+    onFocus: () => {},
     onComplete: () => {},
 };
 
