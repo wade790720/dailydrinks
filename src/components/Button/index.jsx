@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 import "./style.sass";
 
 const Button = props => {
+    const { text, ...otherProps } = props;
     return (
-        <div>
-            <button className="btn">{ props.text }</button>
-        </div>
+        <button className="btn" {...otherProps}>{ text }</button>
     );
 };
 
