@@ -1,5 +1,5 @@
 # dailydrinks
-Order drinks app.
+https://wade790720.github.io/17Project/dist/index.html
 
 ## Build Setup
 ```
